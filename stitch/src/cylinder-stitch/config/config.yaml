@@ -1,0 +1,35 @@
+%YAML:1.0
+---
+f: 2000
+it_num: 100
+flag_mul: 1
+flag_it: 0
+cylinder_method: 11
+stitch_method: 6
+cal_offset: 1
+offset_x: 578  # 578 479
+offset_y: -85  # -85 -10
+offset_x_1: 398
+offset_y_1: 13
+offset_x_2: 846
+offset_y_2: 15
+offset_x_3: 1188
+offset_y_3: 16
+offset_x_4: 1581
+offset_y_4: 12
+offset_x_5: 1970
+offset_y_5: 14
+offset_x_6: 2417
+offset_y_6: 13
+offset_x_7: 2856
+offset_y_7: 14
+offset_x_8: 3243
+offset_y_8: 15
+offset_x_9: 3593
+offset_y_9: 14
+offset_x_10: 4095
+offset_y_10: 15
+resize: 0
+resize_cols: 1920
+resize_rows: 1080
+show_temp: 0

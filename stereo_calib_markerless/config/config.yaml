@@ -1,0 +1,11 @@
+%YAML:1.0
+
+left_intrinsic: "/home/bdca/dataset/new_stereo_imags/camera_left.yaml"
+right_intrinsic: "/home/bdca/dataset/new_stereo_imags/camera_right.yaml"
+extrinsic: "/home/bdca/dataset/new_stereo_imags/extrinsics.yaml"
+image_base: "/home/bdca/dataset/new_stereo_imags/source/indoor"
+frame_id: 11
+image_path: "/home/bdca/dataset/new_stereo_imags/source/indoor"
+rotation_noise: 1
+tran_noise: 0
+noise_flag: 1

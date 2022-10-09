@@ -284,20 +284,34 @@ python video2bag ../data/write.avi bag_name.bag
 
 ### 用途
 
-用於修改yolov5的訓練label格式
+用于修改yolov5的训练label格式
 
-- *edit_txt.py* : 修改文件夾中的所有txt文件的其中一列的數值
-- *delete_special_line.py* : 刪除文件夾中的所有txt文件中某一列含有數值n的行
-- *change_num_txt.py*：改變第一列的類別值
+- *edit_txt.py* : 修改文件夹中的所有txt文件的其中一列的数值
+- *delete_special_line.py* : 删除文件夹中的所有txt文件中某一列含有数值n的行
+- *change_num_txt.py*：改变第一列的类别值
 
 ### 使用
 
 ```
-# 修改文件夾名
+# 修改文件夹名
 python edit_txt.py
-# 刪除多餘的類別
+# 刪除多余的类别
 python delete_special_line.py
-#講類別按照自己的方法編號
+#将类別按照自己的方法编号
 python change_num_txt.py
+```
+
+## voc_to_yolo
+
+### 用途
+
+将voc格式的标注文件修改成yolo格式
+
+### 使用
+
+```
+# 先替换文件夹路径
+cd ~/your_path/voc_to_yolo
+python voc2yolo.py
 ```
 

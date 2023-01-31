@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
 
   socket.open(boost::asio::ip::udp::v4());
   // remote_endpoint = boost::asio::ip::udp::endpoint(
-  //     boost::asio::ip::address::from_string("192.168.89.238"), 8888);
+  //     boost::asio::ip::address::from_string("100.102.137.21"), 8888);
   remote_endpoint = boost::asio::ip::udp::endpoint(
       boost::asio::ip::address::from_string("127.0.0.1"), 8888);
 

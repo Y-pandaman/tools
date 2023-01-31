@@ -1,6 +1,6 @@
 # coding=utf-8
 import os
-path = '/home/psdz/桌面/cons_vehcl_dataset/data/label'  # 替换你的文件夹
+path = '/media/bdca/data3/yolo_new/train'  # 替换你的文件夹
 path_result = path + "/result_final"
 listdir = os.listdir(path)
 
@@ -44,8 +44,19 @@ listdir = os.listdir(path)
 num = {
     "0": '0',
     "1": '1',
-    "2": '3',
-    "3": '3'
+    "2": '1',
+    "3": '1',
+    "4": '1',
+    "5": '1',
+    "6": '1',
+    "7": '1',
+    "8": '1',
+    "9": '2',
+    "10": '2',
+    "11": '2',
+    "12": '2',
+    "13": '2',
+    "14": '2'
 }
 
 try:

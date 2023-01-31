@@ -1,4 +1,4 @@
-# 实用测试小工具
+# 实用开发小工具
 
 ## rosbag_topic_size
 
@@ -313,5 +313,70 @@ python change_num_txt.py
 # 先替换文件夹路径
 cd ~/your_path/voc_to_yolo
 python voc2yolo.py
+```
+
+## loguru
+
+### 用途
+
+日志记录工具
+
+### 安装
+
+```
+# python
+pip install loguru
+
+# C++
+将loguru.cpp和loguru.hpp复制到项目目录下
+```
+
+### 使用
+
+```
+# python
+from loguru import logger
+
+# C++
+#include "loguru.hpp"
+```
+
+## env-setup
+
+### 用途
+
+安装各种软件包的自动化脚本
+
+### 使用
+
+```
+cd your_path/env-setup/
+./packages/install_package_name.sh
+```
+
+## latency_test
+
+### 用途
+
+测试发送端和接受端的时延
+
+### 使用
+
+```
+./send
+./receive
+```
+
+## udp2can
+
+### 用途
+
+解析canet的can数据
+
+### 使用
+
+```
+# 修改端口号
+./udp2can
 ```
 

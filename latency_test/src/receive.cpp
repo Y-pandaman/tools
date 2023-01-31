@@ -23,13 +23,13 @@ int main(int argc, char **argv) {
 
     // std::cout << &v[0] << " " << time_ << std::endl;
     // 发送和接收时间差
-    std::cout << 1000 * atof(time_.c_str()) - atof(&v[0]) << "ms" << std::endl;
+    std::cout << "时间差：" << 1000 * (atof(time_.c_str()) - atof(&v[0])) << " ms" << std::endl;
 
     if (ec && ec != boost::asio::error::message_size) {
       throw std::system_error(ec);
     }
 
     // std::cout << "send to " << ep.address() << std::endl;
-    sock.send_to(boost::asio::buffer("received!"), ep);
+    // sock.send_to(boost::asio::buffer("received!"), ep);
   }
 }

@@ -388,3 +388,27 @@ cd your_path/env-setup/
 
 - **perf.sh**：分析程序的CPU/内存占用率
 - **kill.sh**：杀死某一类进程
+
+## spdlog
+
+### 用途
+
+- 日志记录工具
+
+### 安装
+
+```bash
+sudo apt install libspdlog-dev
+
+# 编译安装
+git clone https://github.com/gabime/spdlog.git
+cd spdlog && mkdir build && cd build
+cmake .. && make -j
+```
+
+### 使用
+
+```C++
+#include "spd_logger.h"
+```
+

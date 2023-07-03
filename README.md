@@ -1,55 +1,57 @@
 # 实用开发小工具
 
-## rosbag_topic_size
+[TOC]
 
-### 用途: 
+## bag_to_image
 
-查看录制的bag中每种topic的消息size, 检测异常topic
+**bag_to_image.py** ,**bag_to_depth.py** **bag_to_image_and_imu.py**分别是将bag中的topic转成RGB图, 深度图, 双目图+IMU的脚本
 
-### 使用:
+## cmd_vel
 
-```
-$ python rosbag_topic_size.py bag_name.bag
-```
+### 用途
 
-## usbtop
+使用键盘来发送cmd_vel命令
 
-### 用途: 
+### 使用
 
-监控USB 类传感器的使用带宽
-
-### 依赖
-
-- libpcap
-- libboost>=1.48.0
+将脚本文件(二选一)添加到ROS功能包的目录下，修改所需的目标topic name，编译完成后，使用以下命令：
 
 ```
-sudo apt install libboost-dev libpcap-dev
+rosrun your_package_name sl_bigcar_keyboard_teleop.py
 ```
 
-### 安装
+## edit-txt
 
-命令行安装: 
+### 用途
 
-```
-$ sudo apt install usbtop
-```
+用于修改yolov5的训练label格式
 
-从源文件安装:
+- *edit_txt.py* : 修改文件夹中的所有txt文件的其中一列的数值
+- *delete_special_line.py* : 删除文件夹中的所有txt文件中某一列含有数值n的行
+- *change_num_txt.py*：改变第一列的类别值
 
-```
-$ cd /path/to/usbtop
-$ mkdir _build && cd _build
-$ cmake -DCMAKE_BUILD_TYPE=Release ..
-$ make
-$ sudo make install
-$ sudo modprobe usbmon   --------最后一定要加这句,加载模块
-```
-
-使用:
+### 使用
 
 ```
-$ sudo usbtop
+# 修改文件夹名
+python edit_txt.py
+# 刪除多余的类别
+python delete_special_line.py
+#将类別按照自己的方法编号
+python change_num_txt.py
+```
+
+## env-setup
+
+### 用途
+
+安装各种软件包的自动化脚本
+
+### 使用
+
+```
+cd your_path/env-setup/
+./packages/install_package_name.sh
 ```
 
 ## iftop
@@ -120,10 +122,6 @@ Cumm：运行iftop到目前时间的总流量
 peak：流量峰值
 rates：分别表示过去 2s 10s 40s 的平均流量
 
-## bag_to_image
-
-**bag_to_image.py** ,**bag_to_depth.py** **bag_to_image_and_imu.py**分别是将bag中的topic转成RGB图, 深度图, 双目图+IMU的脚本
-
 ## iotop
 
 ### 用途
@@ -160,11 +158,84 @@ sudo iotop
 - a：显示累积使用量
 - q：退出
 
+## latency_test
+
+### 用途
+
+测试发送端和接受端的时延
+
+### 使用
+
+```
+./send
+./receive
+```
+
+## loguru
+
+### 用途
+
+日志记录工具
+
+### 安装
+
+```
+# python
+pip install loguru
+
+# C++
+将loguru.cpp和loguru.hpp复制到项目目录下
+```
+
+### 使用
+
+```
+# python
+from loguru import logger
+
+# C++
+#include "loguru.hpp"
+```
+
 ## q2euler
 
 ### 用途
 
 欧拉角和四元数互相转换
+
+## rosbag_topic_size
+
+### 用途: 
+
+查看录制的bag中每种topic的消息size, 检测异常topic
+
+### 使用:
+
+```
+$ python rosbag_topic_size.py bag_name.bag
+```
+
+## ros_video_save
+
+### 用途
+
+- 将topic数据存储为视频文件
+- 将视频文件转为bag文件
+
+### 使用
+
+```
+source devel/setup.bash
+#或者
+source devel/setup.zsh
+# topic转成视频
+rosrun ros_video_save ros_video_save
+
+# 视频转成bag
+cd your_path/ros_video_save/script
+chmod a+x video2bag.py
+python video2bag ../data/write.avi bag_name.bag
+```
 
 ## select_file
 
@@ -185,6 +256,38 @@ python select_file.py
 
 ```
 python rename.py
+```
+
+## scripts
+
+### 用途
+
+包含各种脚本
+
+- **perf.sh**：分析程序的CPU/内存占用率
+- **kill.sh**：杀死某一类进程
+
+## spdlog
+
+### 用途
+
+- 日志记录工具
+
+### 安装
+
+```bash
+sudo apt install libspdlog-dev
+
+# 编译安装
+git clone https://github.com/gabime/spdlog.git
+cd spdlog && mkdir build && cd build
+cmake .. && make -j
+```
+
+### 使用
+
+```C++
+#include "spd_logger.h"
 ```
 
 ## stereo_calib_markerless
@@ -227,9 +330,9 @@ catkin_make -DCATKIN_WHITELIST_PACKAGES=stereo_calib_markerless
 5. 更新环境
 
  ```
-   source ~/devel/setup.bash
-   或者
-   source ~/devel/setup.zsh
+  source ~/devel/setup.bash
+  或者
+  source ~/devel/setup.zsh
  ```
 
 6. 运行
@@ -244,127 +347,44 @@ rviz
 rosrun markerless_stereo_calib show_pcd_cheese
 ```
 
-## cmd_vel
+## usbtop
 
-### 用途
+### 用途: 
 
-使用键盘来发送cmd_vel命令
+监控USB 类传感器的使用带宽
 
-### 使用
+### 依赖
 
-将脚本文件(二选一)添加到ROS功能包的目录下，修改所需的目标topic name，编译完成后，使用以下命令：
-
-```
-rosrun your_package_name sl_bigcar_keyboard_teleop.py
-```
-
-## ros_video_save
-
-### 用途
-
-- 将topic数据存储为视频文件
-- 将视频文件转为bag文件
-
-### 使用
+- libpcap
+- libboost>=1.48.0
 
 ```
-source devel/setup.bash
-#或者
-source devel/setup.zsh
-# topic转成视频
-rosrun ros_video_save ros_video_save
-
-# 视频转成bag
-cd your_path/ros_video_save/script
-chmod a+x video2bag.py
-python video2bag ../data/write.avi bag_name.bag
+sudo apt install libboost-dev libpcap-dev
 ```
-
-## edit-txt
-
-### 用途
-
-用于修改yolov5的训练label格式
-
-- *edit_txt.py* : 修改文件夹中的所有txt文件的其中一列的数值
-- *delete_special_line.py* : 删除文件夹中的所有txt文件中某一列含有数值n的行
-- *change_num_txt.py*：改变第一列的类别值
-
-### 使用
-
-```
-# 修改文件夹名
-python edit_txt.py
-# 刪除多余的类别
-python delete_special_line.py
-#将类別按照自己的方法编号
-python change_num_txt.py
-```
-
-## voc_to_yolo
-
-### 用途
-
-将voc格式的标注文件修改成yolo格式
-
-### 使用
-
-```
-# 先替换文件夹路径
-cd ~/your_path/voc_to_yolo
-python voc2yolo.py
-```
-
-## loguru
-
-### 用途
-
-日志记录工具
 
 ### 安装
 
-```
-# python
-pip install loguru
-
-# C++
-将loguru.cpp和loguru.hpp复制到项目目录下
-```
-
-### 使用
+命令行安装: 
 
 ```
-# python
-from loguru import logger
-
-# C++
-#include "loguru.hpp"
+$ sudo apt install usbtop
 ```
 
-## env-setup
-
-### 用途
-
-安装各种软件包的自动化脚本
-
-### 使用
+从源文件安装:
 
 ```
-cd your_path/env-setup/
-./packages/install_package_name.sh
+$ cd /path/to/usbtop
+$ mkdir _build && cd _build
+$ cmake -DCMAKE_BUILD_TYPE=Release ..
+$ make
+$ sudo make install
+$ sudo modprobe usbmon   --------最后一定要加这句,加载模块
 ```
 
-## latency_test
-
-### 用途
-
-测试发送端和接受端的时延
-
-### 使用
+使用:
 
 ```
-./send
-./receive
+$ sudo usbtop
 ```
 
 ## udp2can
@@ -380,35 +400,17 @@ cd your_path/env-setup/
 ./udp2can
 ```
 
-## scripts
+## voc_to_yolo
 
 ### 用途
 
-包含各种脚本
-
-- **perf.sh**：分析程序的CPU/内存占用率
-- **kill.sh**：杀死某一类进程
-
-## spdlog
-
-### 用途
-
-- 日志记录工具
-
-### 安装
-
-```bash
-sudo apt install libspdlog-dev
-
-# 编译安装
-git clone https://github.com/gabime/spdlog.git
-cd spdlog && mkdir build && cd build
-cmake .. && make -j
-```
+将voc格式的标注文件修改成yolo格式
 
 ### 使用
 
-```C++
-#include "spd_logger.h"
+```
+# 先替换文件夹路径
+cd ~/your_path/voc_to_yolo
+python voc2yolo.py
 ```
 

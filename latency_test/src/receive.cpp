@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
   boost::asio::io_service io;
   // 接收端口8888
   boost::asio::ip::udp::socket sock(
-      io, boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 8888));
+      io, boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), 4000));
 
   struct timespec time = {0, 0};
 

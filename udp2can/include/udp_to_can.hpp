@@ -2,13 +2,13 @@
 #define UDP_TO_CAN_HPP
 
 #include "loguru.hpp"
+#include <bitset>
 #include <boost/asio.hpp>
 #include <iostream>
-#include <bitset>
 #include <thread>
 #include <unistd.h>
 
-#define BUFFER_SIZE 8 * 1024
+#define BUFFER_SIZE 2 * 13
 
 struct can_msgs {
     uint32_t id;
@@ -31,17 +31,20 @@ public:
     void start(std::string remote_ip, int remote_port);
     void receiveData();
     void messageAnalysis(char *data, size_t len);
+    void messageAnalysis(const void *buf_data, size_t len);
     void convertUdp2Can(char *data, can_msgs *can_message);
+    void convertUdp2Can(const uint8_t *data, can_msgs *can_message);
     bool isAllZeroValues(const can_msgs *can_frame);
     void canAnalysis(const can_msgs *can_frame);
     void canToUdp(const can_msgs can_frame);
+
 private:
     boost::asio::io_service io_;
     boost::asio::ip::udp::socket *sockSend;
     boost::asio::ip::udp::endpoint ep_;
     boost::system::error_code ec_;
     boost::asio::ip::udp::endpoint remote_ep_;
-    char buf_[BUFFER_SIZE];
+    char buf_[BUFFER_SIZE] = {};
     int local_port_;
     int remote_port_;
     std::string remote_ip_;

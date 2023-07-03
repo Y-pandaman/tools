@@ -380,3 +380,11 @@ cd your_path/env-setup/
 ./udp2can
 ```
 
+## scripts
+
+### 用途
+
+包含各种脚本
+
+- **perf.sh**：分析程序的CPU/内存占用率
+- **kill.sh**：杀死某一类进程

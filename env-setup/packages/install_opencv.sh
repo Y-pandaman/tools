@@ -11,8 +11,8 @@ prompt_default OPENCV_VERSION "OpenCV Version [${OPENCV_VERSION}]"
 
 status "Install dependencies of OpenCV"
 # update pre-install apt-get packages
-sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
-sudo apt-get update
+#sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+#sudo apt-get update
 
 # install developer tools
 sudo apt -yq install build-essential checkinstall cmake pkg-config
@@ -188,7 +188,7 @@ install_opencv_desktop_gpu() {
     -DBUILD_opencv_python2=ON \
     -DBUILD_opencv_python3=ON \
     -DWITH_OPENCL=OFF \
-    -DWITH_OPENMP=OFF \
+    -DWITH_OPENMP=ON \
     -DWITH_FFMPEG=ON \
     -DWITH_GSTREAMER=ON \
     -DWITH_CUDA=ON \

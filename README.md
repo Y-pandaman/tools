@@ -10,6 +10,7 @@
   - [iftop](#iftop)
   - [iotop](#iotop)
   - [latency_test](#latency_test)
+  - [license](#license)
   - [loguru](#loguru)
   - [q2euler](#q2euler)
   - [rosbag_topic_size](#rosbag_topic_size)
@@ -20,6 +21,7 @@
   - [stereo_calib_markerless](#stereo_calib_markerless)
   - [usbtop](#usbtop)
   - [udp2can](#udp2can)
+  - [utils](#utils)
   - [voc_to_yolo](#voc_to_yolo)
 
 ## bag_to_image
@@ -189,6 +191,19 @@ sudo iotop
 ```
 ./send
 ./receive
+```
+
+## license
+
+### 用途
+
+生成验证文件
+
+### 使用
+
+```
+./generate_license (默认)
+./generate_license --public_key=/your_path/public.pem --private_key=/your_path/private.pem  (可选)
 ```
 
 ## loguru
@@ -419,6 +434,18 @@ $ sudo usbtop
 # 修改端口号
 ./udp2can
 ```
+
+## utils
+
+### 用途
+
+包含各种小工具
+
+- json：C++数据格式转成json格式
+- net：检测IP工具
+- obfuscate：字符加密
+- perf：计算耗时
+- time：获取时间戳（秒、毫秒）
 
 ## voc_to_yolo
 

@@ -23,6 +23,7 @@
   - [udp2can](#udp2can)
   - [utils](#utils)
   - [voc_to_yolo](#voc_to_yolo)
+  - [yalk](#yalk)
 
 ## bag_to_image
 
@@ -461,3 +462,59 @@ cd ~/your_path/voc_to_yolo
 python voc2yolo.py
 ```
 
+## yalk
+
+### 用途
+
+加密软件
+
+### 使用
+
+```shell
+./build.sh
+#修改将公钥和许可证路径后
+./build.sh
+```
+
+1. 在开发者主机中，使用 YALK 项目中构建的命令行工具 `clis_yalk` 生成密钥对，并将公钥字符串复制到文件 `samples/simple_demo/include/yalk_helper.h` 。
+
+   ```bash
+   ./clis_yalk keygen /tmp
+   Public key saved to /tmp/public_key.pem
+   Private key saved to /tmp/private_key.pem
+   Base64 encoded public key:
+   ...
+   Base64 encoded private key:
+   ...
+   ```
+
+2. 在客户端，使用 YALK 项目中构建的命令行工具 `clis_yalk` 生成机器指纹文件
+
+   ```bash
+   ./clis_yalk collect /tmp/public_key.pem -o /tmp/machine.dat
+   HWID saved to /tmp/machine.dat
+   ```
+
+   或者不指定输出文件名，直接输出经过 Base64 编码的机器指纹字符串，以便传输：
+
+   ```bash
+   ./clis_yalk collect /tmp/public_key.pem -o /tmp/machine.dat
+   HWID (encoded):
+   ...
+   ```
+
+   或者在现有项目中直接调用`yalk_collect`函数生成机器指纹文件。
+
+3. 在开发者主机中，使用 YALK 项目中构建的命令行工具 `clis_yalk` 生成许可证文件
+
+   ```bash
+   $ ./clis_yalk issue /tmp/private_key.pem /tmp/machine.dat -o /tmp/yalk.lic
+   
+   Config:
+   {"common":{"issue_number":0,"product_name":"YALK","product_version":"1.0.0","type":0}}
+   Issued license saved to /tmp/yalk.lic
+   ```
+
+   或者在现有项目中直接调用`yalk_issue`函数生成许可证文件。
+
+4. 在客户端，项目中直接调用`yalk_verify`函数，对给定的许可证文件（在第 3 步中生成）、本机的机器指纹（运行时采集）以及请求的许可证限制（预设于`yalk_helper.h`中）三者进行验证。

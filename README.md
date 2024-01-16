@@ -8,6 +8,7 @@
   - [edit-txt](#edit-txt)
   - [env-setup](#env-setup)
   - [filter](#filter)
+  - [frp](#frp)
   - [iftop](#iftop)
   - [iotop](#iotop)
   - [latency_test](#latency_test)
@@ -100,6 +101,19 @@ int main(int argc, char **argv) {
     }
     return 0;
 }
+```
+
+## frp
+
+### 用途：
+
+部署frpc开机启动快捷脚本
+
+### 使用：
+
+```bash
+# 修改conf中文件配置及文件名，例如：frpc_rjs.ini
+./install rjs
 ```
 
 ## iftop

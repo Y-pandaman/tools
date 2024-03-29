@@ -24,8 +24,9 @@ int main(int argc, char **argv) {
 
     // 时间戳
     clock_gettime(CLOCK_REALTIME, &time);
-    std::string message =
-        std::to_string(time.tv_sec + time.tv_nsec / 1000000000.0);
+    //std::string message =
+    //    std::to_string(time.tv_sec + time.tv_nsec / 1000000000.0);
+    std::string message = "heartbeat";
 
     // 发送数据
     socket.send_to(boost::asio::buffer(message), remote_endpoint);

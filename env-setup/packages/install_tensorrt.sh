@@ -2,8 +2,8 @@
 
 set -ex
 
-CUDA_VERSION=${1:-"11.6.2"}
-TRT_VERSION=${2:-"8.4.3.1"}
+CUDA_VERSION=${1:-"10.2"}
+TRT_VERSION=${2:-"8.4.0.6"}
 OS_VERSION=${3:-"ubuntu18.04"}
 TARGETARCH=${4:-"amd64"}
 

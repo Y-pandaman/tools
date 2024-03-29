@@ -13,7 +13,7 @@ BOOST_VERSION=${BOOST_VERSION//./_}
 pushd ${TMP_DIR}
 
 # get latest source
-wget https://dl.bintray.com/boostorg/release/1.70.0/source/boost_${BOOST_VERSION}.tar.gz
+wget https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_${BOOST_VERSION}.tar.gz
 mkdir boost && tar --strip-components=1 -xzvf boost_${BOOST_VERSION}.tar.gz -C boost
 
 # build and install
